@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "UniJG.Application": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
