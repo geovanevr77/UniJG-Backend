@@ -1,19 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36401.2 d17.14
+VisualStudioVersion = 17.14.36401.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniJG.Api", "UniJG-Backend\UniJG.Api.csproj", "{80DC373E-9088-4F75-BF9B-9166239078F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		UniJG-Backend\Dockerfile = UniJG-Backend\Dockerfile
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{847316DE-5150-46D2-BF18-B9240591FA03}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CFDD9876-5EA2-4FB1-BAC6-7777438996AA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{ACF60732-49D1-4BD4-A36E-5E7B7B3163AE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{738392B0-B948-42DE-91E8-5181D3E5CC63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dev", "dev", "{8B4ADC27-D7A5-42F3-BC92-C8E133C45842}"
 	ProjectSection(SolutionItems) = preProject
@@ -37,8 +37,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniJG.Application.Abstractions", "UniJG.Application.Abstractions\UniJG.Application.Abstractions.csproj", "{4E47C5A6-116C-4216-AEF8-D998782FE5AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniJG.Api.UnitTests", "UniJG.Api.UnitTests\UniJG.Api.UnitTests.csproj", "{C88BD871-4B20-4215-8D9B-BD0465444EC2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniJG.Producers", "UniJG.Producers\UniJG.Producers.csproj", "{7C099E3E-2E67-468F-B630-6570FFEB28E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,10 +76,6 @@ Global
 		{C88BD871-4B20-4215-8D9B-BD0465444EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C88BD871-4B20-4215-8D9B-BD0465444EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C88BD871-4B20-4215-8D9B-BD0465444EC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C099E3E-2E67-468F-B630-6570FFEB28E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C099E3E-2E67-468F-B630-6570FFEB28E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C099E3E-2E67-468F-B630-6570FFEB28E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C099E3E-2E67-468F-B630-6570FFEB28E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,7 +92,6 @@ Global
 		{6147A749-06BE-4771-A2BC-65B67FB7F22A} = {847316DE-5150-46D2-BF18-B9240591FA03}
 		{4E47C5A6-116C-4216-AEF8-D998782FE5AA} = {847316DE-5150-46D2-BF18-B9240591FA03}
 		{C88BD871-4B20-4215-8D9B-BD0465444EC2} = {CFDD9876-5EA2-4FB1-BAC6-7777438996AA}
-		{7C099E3E-2E67-468F-B630-6570FFEB28E3} = {847316DE-5150-46D2-BF18-B9240591FA03}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7C512B16-0363-4CD6-8B0F-CC1F85F33D05}
