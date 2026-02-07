@@ -25,13 +25,8 @@
   <ItemGroup>
     <ProjectReference Include="..\UniJG.Application.Abstractions\UniJG.Application.Abstractions.csproj" />
     <ProjectReference Include="..\UniJG.Application\UniJG.Application.csproj" />
-    <ProjectReference Include="..\UniJG.Consumer\UniJG.Consumer.csproj" />
     <ProjectReference Include="..\UniJG.Domain.Services\UniJG.Domain.Services.csproj" />
     <ProjectReference Include="..\UniJG.Infrastructure.Repositories\UniJG.Infrastructure.Repositories.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="HealthChecks\" />
   </ItemGroup>
 
 </Project>

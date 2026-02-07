@@ -1,25 +1,36 @@
+using UniJG_Backend;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddElasticApmConfiguration();
+builder.Services.AddAuthenticationExtension();
+builder.Services.AddHttpContextAccessor();
+//builder.Services.AddUsuarioRequest();
+builder.Services.AddControllerAndFilters();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwagger();
+//builder.Services.AddDomainServices();
+//builder.Services.AddHelperServices();
+//builder.Services.AddDbConnectionFactory();
+//builder.Services.AddInfrastructureRepositories();
+//builder.Services.AddRepositoriesWithSqlServer();
+//builder.Services.AddUnitOfWork();
+//builder.Services.AddKeyCloakClient();
+//builder.Services.AddTokenDeAcesso();
+//builder.Services.AddPipelineBehaviors();
+//builder.Services.AddApplicationValidators();
+builder.Services.AddHealthChecks(builder.Configuration);
+//builder.Services.AddMapster();
 
 WebApplication app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
-
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseEndpointsConfiguration();
+app.UseHealthChecksConfiguration();
 
-app.MapControllers();
-
-app.Run();
+await app.RunAsync();
