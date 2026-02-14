@@ -15,7 +15,9 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "UNI_AUTH_SECRET": "12345678912345678912345678912345",
+        "CONNECTIONSTRING_UNI": "server=localhost;port=3306;database=UNI_JG_BANCO_DEV;user=root;"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7292;http://localhost:5288"

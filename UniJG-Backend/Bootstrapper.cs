@@ -22,6 +22,11 @@ namespace UniJG_Backend
         public static IServiceCollection AddAuthenticationExtension(
             this IServiceCollection services)
         {
+            string? secret = Environment.GetEnvironmentVariable("UNI_AUTH_SECRET");
+
+            if (string.IsNullOrWhiteSpace(secret))
+                throw new Exception("UNI_AUTH_SECRET não está configurada.");
+
             services.AddAuthentication(options =>
             {
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -29,18 +34,11 @@ namespace UniJG_Backend
             })
             .AddJwtBearer(options =>
             {
-                options.BackchannelHttpHandler = new HttpClientHandler()
-                {
-                    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
-                };
-                options.Authority = Environment.GetEnvironmentVariable("SICOF_AUTH_AUTHORITY");
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidIssuer = Environment.GetEnvironmentVariable("SICOF_AUTH_ISSUER"),
-                    ValidAudience = Environment.GetEnvironmentVariable("SICOF_AUTH_AUDIENCE"),
-
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SICOF_AUTH_SECRET"))),
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(secret))
                 };
             });
 
@@ -75,6 +73,8 @@ namespace UniJG_Backend
         {
             services.AddSwaggerGen(options =>
             {
+                string? uniUrl = Environment.GetEnvironmentVariable("UNI_URL");
+
                 options.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
@@ -84,8 +84,11 @@ namespace UniJG_Backend
                         Contact = new OpenApiContact
                         {
                             Name = "UNI",
-                            Url = new Uri(Environment.GetEnvironmentVariable("UNI_URL"))
+                            Url = string.IsNullOrWhiteSpace(uniUrl)
+                            ? null
+                            : new Uri(uniUrl)
                         }
+
                     });
 
                 string applicationBasePath = AppContext.BaseDirectory;

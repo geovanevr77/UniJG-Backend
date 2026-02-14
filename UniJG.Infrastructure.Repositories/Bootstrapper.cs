@@ -60,10 +60,14 @@ namespace UniJG.Infrastructure.Repositories
         public static IServiceCollection AddDbConnectionFactory(
             this IServiceCollection services)
         {
-            return services
-                .AddTransient<IDbConnectionFactory>(x =>
-                    new DbConnectionFactory(
-                        Environment.GetEnvironmentVariable("CONNECTIONSTRING_UNI") ?? string.Empty));
+            string? connectionString = Environment.GetEnvironmentVariable("CONNECTIONSTRING_UNI");
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception("Variável CONNECTIONSTRING_UNI não configurada.");
+
+            return services.AddTransient<IDbConnectionFactory>(_ =>
+                new DbConnectionFactory(connectionString));
+
         }
     }
 }
